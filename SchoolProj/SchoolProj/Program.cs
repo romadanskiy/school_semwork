@@ -14,10 +14,7 @@ namespace SchoolProj
     {
         public static void Main(string[] args)
         {
-            //CreateHostBuilder(args).Build().Run();
-            var usersDao = new UsersDao();
-            var newUser = new Users("Kirill", "12345678", DateTime.Today);
-            usersDao.Save(newUser);
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
