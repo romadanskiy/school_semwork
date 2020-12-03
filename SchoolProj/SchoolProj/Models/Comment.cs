@@ -9,5 +9,12 @@ namespace SchoolProj.Models
         public int UsersId { get; set; }
         public string CommentText { get; set; }
         public DateTime CreationDate { get; set; }
+
+        public Comment(int usersId, string commentText, DateTime creationDate)
+        {
+            UsersId = usersId;
+            CommentText = commentText;
+            CreationDate = creationDate;
+        }
     }
 }
