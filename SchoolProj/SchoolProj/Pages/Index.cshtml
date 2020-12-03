@@ -1,4 +1,5 @@
 ﻿@page
+@using SchoolProj.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Главная страница";
@@ -19,6 +20,32 @@
 
         <div class="row">
             
+            @foreach (var course in new CourseDao().GetAllWithSubjects())
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                             xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
+                             role="img">
+                            <rect width="100%" height="100%" fill="#003B7A"/>
+                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">@course.Name</text>
+                        </svg>
+                        <div class="card-body">
+                            <p class="card-text">@course.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a class="btn btn-outline-primary btn-sm" href="#">Подробнее</a>
+                                <small class="text-muted">@course.NumberOfStudents участников</small>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Информатика</li>
+                            <li>Программирование</li>
+                        </ul>
+                    </div>
+                </div>
+            }
+            
+            <!--
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
@@ -28,9 +55,9 @@
                         <text x="50%" y="50%" fill="#eceeef" dy=".3em">Основы программирования С#</text>
                     </svg>
                     <div class="card-body">
-                        <p class="card-text">Курс разработан для студентов первого года обучения 
-                            компьютерных специальностей. Рассчитан на людей с минимальным опытом 
-                            программирования и знакомит с основами синтаксиса C# и стандартными классами 
+                        <p class="card-text">Курс разработан для студентов первого года обучения
+                            компьютерных специальностей. Рассчитан на людей с минимальным опытом
+                            программирования и знакомит с основами синтаксиса C# и стандартными классами
                             .NET, с основами ООП и базовыми алгоритмами. </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <a class="btn btn-outline-primary btn-sm" href="#">Подробнее</a>
@@ -43,7 +70,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
@@ -53,9 +80,9 @@
                         <text x="50%" y="50%" fill="#eceeef" dy=".3em">Экономика гномика</text>
                     </svg>
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                            Accusantium animi architecto, aut autem beatae eligendi harum hic mollitia 
-                            nemo, obcaecati placeat, quidem rem voluptatum. 
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Accusantium animi architecto, aut autem beatae eligendi harum hic mollitia
+                            nemo, obcaecati placeat, quidem rem voluptatum.
                             Distinctio, dolore tempore. Dolor repellendus, sint!</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <a class="btn btn-outline-primary btn-sm" href="#">Подробнее</a>
@@ -67,7 +94,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
@@ -90,7 +117,8 @@
                     </ul>
                 </div>
             </div>
-            
+            -->
+
         </div>
     </div>
 </div>
