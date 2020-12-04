@@ -9,31 +9,45 @@
     Layout = "Shared/_Layout";
 }
 
-<div>
-    <div>@Model.Course.Name</div>
-    <div>@Model.Course.Description</div>
-    <div>Цена: @Model.Course.Price</div>
-    <div>
-        <ul>
-            @foreach (var subject in @Model.Subjects)
-            {
-                <li>@subject</li>
-            }
-        </ul>
+<section class="jumbotron text-center">
+    <div class="container-course">
+        <h1>@Model.Course.Name</h1>
     </div>
-    <div>Содержание:</div>
-    <ul>
-    @foreach (var unit in @Model.Units)
-    {
-        <li>
-        <div>@unit.Name (занятий: @unit.Lessons.Count)</div>
-        <ul>
-        @foreach (var lesson in @unit.Lessons)
-        {
-            <li>@lesson.Name</li>
-        }
-        </ul>
-        </li>
-    }
-    </ul>
+</section>
+
+<div class="course-block">
+    <div class="course-card simple-border">
+        <div class="course-description">@Model.Course.Description</div>
+        <div class="course-content-info">
+            <div>
+                <ul>
+                    @foreach (var subject in @Model.Subjects)
+                    {
+                        <li>@subject</li>
+                    }
+                </ul>
+            </div>
+            <div>Содержание:</div>
+            <ul>
+                @foreach (var unit in @Model.Units)
+                {
+                    <li>
+                        <div>@unit.Name (занятий: @unit.Lessons.Count)</div>
+                        <ul>
+                            @foreach (var lesson in @unit.Lessons)
+                            {
+                                <li>@lesson.Name</li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+            <div>Цена: @Model.Course.Price</div>
+        </div>
+    </div>
+    
+    <div class="course-comments simple-border">
+        <!-- TODO добавить комменты -->
+        Тут будут комментарии
+    </div>
 </div>
