@@ -31,3 +31,20 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+.my-card {
+  width: 100%;
+  height: 225px;
+  background-color: #003B7A;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-card-placeholder {
+  color: #eceeef;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
