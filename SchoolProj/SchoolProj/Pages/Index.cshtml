@@ -20,7 +20,7 @@
 
         <div class="row">
             
-            @foreach (var course in new CourseDao().GetAllWithSubjects())
+            @foreach (var course in Model.Courses)
             {
                 @await Component.InvokeAsync("CourseIndex", course);
             }

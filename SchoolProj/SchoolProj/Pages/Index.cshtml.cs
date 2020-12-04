@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SchoolProj.Models;
 
 namespace SchoolProj.Pages
 {
@@ -17,8 +18,11 @@ namespace SchoolProj.Pages
             _logger = logger;
         }
 
+        public List<Course> Courses;
+
         public void OnGet()
         {
+            Courses = new CourseDao().GetAllWithSubjects();
         }
     }
 }

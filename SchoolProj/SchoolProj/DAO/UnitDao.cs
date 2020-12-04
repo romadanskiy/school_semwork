@@ -80,6 +80,7 @@ namespace SchoolProj.Models
                     foreach (DbDataRecord record in reader)
                     {
                         var unit = GetUnit(record);
+                        unit.Lessons = new LessonDao().GetByUnitId(unit.Id);
                         units.Add(unit);
                     }
                 }
