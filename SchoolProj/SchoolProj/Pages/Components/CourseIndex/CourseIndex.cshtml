@@ -12,12 +12,14 @@
             <p class="card-text">@Model.Description</p>
             <div class="d-flex justify-content-between align-items-center">
                 <a class="btn btn-outline-primary btn-sm" href="#">Подробнее</a>
-                <small class="text-muted">@Model.NumberOfStudents участников</small>
+                <small class="text-muted">участников: @Model.NumberOfStudents</small>
             </div>
         </div>
         <ul>
-            <li>Информатика</li>
-            <li>Программирование</li>
+            @foreach (var subject in Model.Subjects)
+            {
+                <li>@subject</li>
+            }
         </ul>
     </div>
 </div>
