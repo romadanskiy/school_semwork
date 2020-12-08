@@ -1,0 +1,59 @@
+﻿@page
+@using SchoolProj.Models
+@model SchoolProj.Pages.Search
+
+@{
+    ViewData["Title"] = "Поиск";
+}
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<section class="jumbotron text-center">
+    <div class="popular-head">Популярные курсы основых предметов</div>
+</section>
+
+<div class="album bg-white">
+    <div class="container">
+
+        <div class="row">
+            @*
+            @foreach (var course in Model.Courses)
+            {
+                @await Component.InvokeAsync("CourseIndex", course);
+            }*@
+            
+            <div class="col-md-4">
+                <div class="popular-subject">Математика</div>
+                @{ var math = Model.Courses
+                       .Where(c => c.Subjects.Contains("математика"))
+                       .OrderByDescending(c => c.NumberOfStudents)
+                       .First(); }
+
+                @await Component.InvokeAsync("CoursePopular", math);
+            </div>
+            
+            <div class="col-md-4">
+                <div class="popular-subject">Физика</div>
+                @{ var physics = Model.Courses
+                       .Where(c => c.Subjects.Contains("физика"))
+                       .OrderByDescending(c => c.NumberOfStudents)
+                       .First(); }
+
+                @await Component.InvokeAsync("CoursePopular", physics);
+            </div>
+            
+            <div class="col-md-4">
+                <div class="popular-subject">История</div>
+                @{ var history = Model.Courses
+                       .Where(c => c.Subjects.Contains("история"))
+                       .OrderByDescending(c => c.NumberOfStudents)
+                       .First(); }
+
+                @await Component.InvokeAsync("CoursePopular", history);
+            </div>
+
+        </div>
+    </div>
+</div>
