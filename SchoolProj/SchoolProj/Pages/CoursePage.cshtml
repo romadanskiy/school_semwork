@@ -16,43 +16,15 @@
 </section>
 
 <div class="course-block">
-    <div class="course-card simple-border">
-        <div class="course-description">@Model.Course.Description</div>
-        <div class="course-content-info">
-            <div>
-                <div>Предметы:</div>
-                <ul>
-                    @foreach (var subject in @Model.Course.Subjects)
-                    {
-                        <li>@subject</li>
-                    }
-                </ul>
-            </div>
-            <div>Содержание:</div>
-            <ul>
-                @foreach (var unit in @Model.Course.Units)
-                {
-                    <li>
-                        <div>@unit.Name (занятий: @unit.Lessons.Count)</div>
-                        <ul>
-                            @foreach (var lesson in @unit.Lessons)
-                            {
-                                <li>@lesson.Name</li>
-                            }
-                        </ul>
-                    </li>
-                }
-            </ul>
-            <div>Цена: @Model.Course.Price</div>
-        </div>
-    </div>
-    
+
+    @await Component.InvokeAsync("CourseSingle", @Model.Course)
+
     <div class="course-comments simple-border">
         <!-- TODO добавить форму создания комментария -->
 
         @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
         {
-            @await Component.InvokeAsync("CommentForCourse", comment);
+            @await Component.InvokeAsync("CommentForCourse", comment)
         }
     </div>
 </div>
