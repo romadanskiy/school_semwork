@@ -22,7 +22,7 @@
             <div>
                 <div>Предметы:</div>
                 <ul>
-                    @foreach (var subject in @Model.Subjects)
+                    @foreach (var subject in @Model.Course.Subjects)
                     {
                         <li>@subject</li>
                     }
@@ -30,7 +30,7 @@
             </div>
             <div>Содержание:</div>
             <ul>
-                @foreach (var unit in @Model.Units)
+                @foreach (var unit in @Model.Course.Units)
                 {
                     <li>
                         <div>@unit.Name (занятий: @unit.Lessons.Count)</div>
