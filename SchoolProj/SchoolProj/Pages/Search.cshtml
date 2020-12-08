@@ -31,7 +31,7 @@
                        .OrderByDescending(c => c.NumberOfStudents)
                        .First(); }
 
-                @await Component.InvokeAsync("CoursePopular", math);
+                @await Component.InvokeAsync("CoursePopular", math)
             </div>
             
             <div class="col-md-4">
@@ -41,7 +41,7 @@
                        .OrderByDescending(c => c.NumberOfStudents)
                        .First(); }
 
-                @await Component.InvokeAsync("CoursePopular", physics);
+                @await Component.InvokeAsync("CoursePopular", physics)
             </div>
             
             <div class="col-md-4">
@@ -51,7 +51,7 @@
                        .OrderByDescending(c => c.NumberOfStudents)
                        .First(); }
 
-                @await Component.InvokeAsync("CoursePopular", history);
+                @await Component.InvokeAsync("CoursePopular", history)
             </div>
 
         </div>

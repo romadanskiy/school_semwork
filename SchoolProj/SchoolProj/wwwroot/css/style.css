@@ -135,4 +135,19 @@ footer p {
   color: #fff;
 }
 
+.comment-block {
+  width: 100%;
+  margin-top: 1rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid #003B7A;
+}
+
+.comment-user {
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.comment-user:after {
+  content: ',';
+}
 

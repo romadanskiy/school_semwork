@@ -60,6 +60,7 @@ namespace SchoolProj.Models
                     foreach (DbDataRecord record in reader)
                     {
                         var comment = GetComment(record);
+                        comment.UsersName = new UsersDao().GetById(comment.UsersId).Name;
                         comments.Add(comment);
                     }
                 }
@@ -70,9 +71,9 @@ namespace SchoolProj.Models
         private static Comment GetComment(IDataRecord record)
         {
             return new Comment(
-                int.Parse(record["user_id"].ToString()),
-                record["text"].ToString(),
-                DateTime.Parse(record["date"].ToString()));
+                int.Parse(record["users_id"].ToString()),
+                record["comment_text"].ToString(),
+                DateTime.Parse(record["creation_date"].ToString()));
         }
     }
 }

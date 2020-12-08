@@ -48,7 +48,11 @@
     </div>
     
     <div class="course-comments simple-border">
-        <!-- TODO добавить комменты -->
-        Тут будут комментарии
+        <!-- TODO добавить форму создания комментария -->
+
+        @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
+        {
+            @await Component.InvokeAsync("CommentForCourse", comment);
+        }
     </div>
 </div>
