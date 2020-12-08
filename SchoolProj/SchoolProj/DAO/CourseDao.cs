@@ -24,6 +24,8 @@ namespace SchoolProj.Models
                 {
                     reader.Read();
                     var course = GetCourse(reader);
+                    course.Subjects = GetSubjects(course.Id);
+                    course.Units = new UnitDao().GetByCourseId(course.Id);
                     return course;
                 }
                 else { return null; }
@@ -43,6 +45,8 @@ namespace SchoolProj.Models
                     foreach (DbDataRecord record in reader)
                     {
                         var course = GetCourse(record);
+                        course.Subjects = GetSubjects(course.Id);
+                        course.Units = new UnitDao().GetByCourseId(course.Id);
                         allCourses.Add(course);
                     }
                 }
@@ -67,28 +71,7 @@ namespace SchoolProj.Models
             // не используется
             throw new System.NotImplementedException();
         }
-        
-        public List<Course> GetAllWithSubjects()
-        {
-            var allCoursesWithSubjects = new List<Course>();
-            using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString.Get()))
-            {
-                connection.Open();
-                var command = new NpgsqlCommand(this.SelectAll(), connection);
-                var reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    foreach (DbDataRecord record in reader)
-                    {
-                        var course = GetCourse(record);
-                        course.Subjects = GetSubjects(course.Id);
-                        allCoursesWithSubjects.Add(course);
-                    }
-                }
-            }
-            return allCoursesWithSubjects;
-        }
-        
+
         public List<string> GetSubjects(int courseId)
         {
             var subjects = new List<string>();

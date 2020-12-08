@@ -22,7 +22,7 @@ namespace SchoolProj.Pages
 
         public void OnGet()
         {
-            Courses = new CourseDao().GetAllWithSubjects();
+            Courses = new CourseDao().GetAll();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace SchoolProj.Pages
         public void OnGet()
         {
             var courseDao = new CourseDao();
-            Courses = courseDao.GetAllWithSubjects();
+            Courses = courseDao.GetAll();
         }
     }
 }
