@@ -15,27 +15,27 @@ namespace SchoolProj.Models
 
         public Lesson GetById(int id)
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public List<Lesson> GetAll()
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public void Save(Lesson t)
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public void Delete(Lesson t)
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public void DeleteById(int id)
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
         
         public List<Lesson> GetByUnitId(int unitId)

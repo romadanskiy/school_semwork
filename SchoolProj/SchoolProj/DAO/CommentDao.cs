@@ -15,12 +15,12 @@ namespace SchoolProj.Models
 
         public Comment GetById(int id)
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public List<Comment> GetAll()
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public void Save(Comment comment)
@@ -39,12 +39,12 @@ namespace SchoolProj.Models
 
         public void Delete(Comment t)
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public void DeleteById(int id)
         {
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public List<Comment> GetByCourseId(int courseId)

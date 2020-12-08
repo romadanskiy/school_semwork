@@ -52,19 +52,19 @@ namespace SchoolProj.Models
         public void Save(Unit t)
         {
             // не используется
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public void Delete(Unit t)
         {
             // не используется
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public void DeleteById(int id)
         {
             // не используется
-            throw new System.NotImplementedException();
+            throw new System.Exception();
         }
 
         public List<Unit> GetByCourseId(int courseId)
