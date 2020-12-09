@@ -25,9 +25,9 @@
         
         <!-- TODO отправлять коммент на сервер -->
         
-        <form class="add-comment-form" action="">
-            <textarea placeholder="Введите комментарий"></textarea>
-            <button class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
+        <form class="add-comment-form" action="" onsubmit="return false;">
+            <textarea id="commentInput" placeholder="Введите комментарий"></textarea>
+            <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
         </form>
 
         @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))

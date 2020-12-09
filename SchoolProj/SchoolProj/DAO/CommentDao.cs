@@ -30,7 +30,7 @@ namespace SchoolProj.Models
                 connection.Open();
                 var command = new NpgsqlCommand(
                     this.Insert(
-                        new[] {"course_id", "user_id", "text", "date"},
+                        new[] {"course_id", "users_id", "comment_text", "creation_date"},
                         new object[] {comment.CourseId, comment.UsersId, comment.CommentText, comment.CreationDate.ToString("d")}),
                     connection);
                 command.ExecuteNonQuery();

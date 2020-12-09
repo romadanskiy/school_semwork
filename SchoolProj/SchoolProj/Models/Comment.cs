@@ -17,5 +17,13 @@ namespace SchoolProj.Models
             CommentText = commentText;
             CreationDate = creationDate;
         }
+
+        public Comment(int courseId, int usersId, string commentText, DateTime creationDate)
+        {
+            CourseId = courseId;
+            UsersId = usersId;
+            CommentText = commentText;
+            CreationDate = creationDate;
+        }
     }
 }

@@ -51,6 +51,8 @@ namespace SchoolProj
 
             app.UseAuthorization();
 
+            app.Map("/add_comment", AddComment.Add);
+
             app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
         }
     }
