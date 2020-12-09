@@ -16,25 +16,26 @@
 </section>
 
 <div class="course-block">
+    <div class="container">
 
-    @await Component.InvokeAsync("CourseSingle", @Model.Course)
-    
-    <!-- TODO кнопка купить -->
+        @await Component.InvokeAsync("CourseSingle", @Model.Course)
 
-    <div class="course-comments simple-border">
-        
-        <!-- TODO отправлять коммент на сервер -->
-        
-        <form class="add-comment-form" action="" onsubmit="return false;">
-            <textarea id="commentInput" placeholder="Введите комментарий"></textarea>
-            <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
-        </form>
+        <!-- TODO кнопка купить -->
 
-        <div id="comments">
-            @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
-            {
-                @await Component.InvokeAsync("CommentForCourse", comment)
-            }
+        <div class="course-comments simple-border">
+
+            <form class="add-comment-form" action="" onsubmit="return false;">
+                <textarea id="commentInput" placeholder="Введите комментарий"></textarea>
+                <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
+            </form>
+
+            <div id="comments">
+                @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
+                {
+                    @await Component.InvokeAsync("CommentForCourse", comment)
+                }
+            </div>
         </div>
+    
     </div>
 </div>

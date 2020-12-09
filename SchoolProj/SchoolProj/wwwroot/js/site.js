@@ -12,6 +12,8 @@ function addComment(){
 
     let path = document.location
     let courseId = /\d+#?$/g.exec(path)[0]
+
+    // TODO отправлять id пользователя
     
     $.ajax({
         type: 'POST',
