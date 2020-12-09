@@ -29,7 +29,19 @@ function addComment(){
         // }
     })
     
-    // TODO добавить коммент на страницу
+    let dateTime = new Date().toLocaleString("ru").slice(0, -3).replace(',', '');
+
+    // TODO получить логин пользователя
+    
+    let newComment = "<div class=\"comment-block\">" +
+                        "<div class=\"comment-text\">" + commentText + "</div>" +
+                        "<div class=\"comment-user\">" + "ЛОГИН" + "</div>" +
+                        "<div class=\"comment-date\">" + dateTime + "</div>" +
+                    "</div>";
+    
+    let comments = $("#comments");
+    comments.prepend(newComment);
+    
     // TODO изменить в БД date на timestamp
 
     commentInput.val("");

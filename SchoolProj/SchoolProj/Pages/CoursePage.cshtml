@@ -30,9 +30,11 @@
             <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
         </form>
 
-        @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
-        {
-            @await Component.InvokeAsync("CommentForCourse", comment)
-        }
+        <div id="comments">
+            @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
+            {
+                @await Component.InvokeAsync("CommentForCourse", comment)
+            }
+        </div>
     </div>
 </div>
