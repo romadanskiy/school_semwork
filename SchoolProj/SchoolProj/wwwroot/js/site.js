@@ -49,3 +49,36 @@ function addComment(){
     commentInput.val("");
 
 }
+
+
+// Вход
+function signin() {
+    let form = document.signIn;
+    let name = form.name.value;
+    let password = form.password.value;
+    let remember = form.remember.checked;
+    
+    if (name.length < 1 || password.length < 1){
+        alert("Заполните все поля");
+        return;
+    }
+    
+    // TODO запомнить меня
+    
+    $.ajax({
+        type: 'POST',
+        url: '/signin_user',
+        headers: {
+            'name': name,
+            'password': password,
+            'remember': remember
+        },
+        success: function(res, status, xhr) {
+            let result = xhr.getResponseHeader("signin_result")
+            if (result === "ok")
+                document.location.href = "Account"
+            else
+                alert("Неверный логин или пароль")
+        }
+    })
+}

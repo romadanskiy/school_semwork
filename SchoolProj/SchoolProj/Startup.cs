@@ -24,15 +24,16 @@ namespace SchoolProj
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            //services.AddSession();
-            //services.AddMemoryCache();
+            services.AddSession();
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.UseStaticFiles();
-            //app.UseSession();
+            app.UseStaticFiles();
+            app.UseSession();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -45,12 +46,10 @@ namespace SchoolProj
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
+            app.Map("/signin_user", Sign.In);
             app.Map("/add_comment", AddComment.Add);
 
             app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });

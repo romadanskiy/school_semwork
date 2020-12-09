@@ -101,6 +101,33 @@ namespace SchoolProj.Models
             }
         }
 
+        public Users TrySignin(string name, string password)
+        {
+            var user = GetByName(name);
+            
+            if (user == null)
+                return null;
+
+            return user.Password == password ? user : null;
+        }
+
+        public Users GetByName(string name)
+        {
+            using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString.Get()))
+            {
+                connection.Open();
+                var command = new NpgsqlCommand(this.SelectByField("name", name), connection);
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    var user = GetUser(reader);
+                    return user;
+                }
+                else { return null; }
+            }
+        }
+
         private static Users GetUser(IDataRecord record)
         {
             return new Users(

@@ -36,6 +36,16 @@ namespace SchoolProj.Models
             return $"SELECT * FROM {table} WHERE id = {id}";
         }
 
+        public static string SelectByField<T>(this IDao<T> table, string field, string value)
+        {
+            return SelectByField(table.ToString(), field, value);
+        }
+        
+        public static string SelectByField(string table, string field, string value)
+        {
+            return $"SELECT * FROM {table} WHERE {field} = '{value}'";
+        }
+
         public static string Delete<T>(this IDao<T> table, int id)
         {
             return Delete(table.ToString(), id);
