@@ -62,7 +62,7 @@ CREATE TABLE comment
     course_id INTEGER NOT NULL,
     users_id INTEGER NOT NULL,
     comment_text TEXT NOT NULL,
-    creation_date DATE NOT NULL,
+    creation_date TIMESTAMP NOT NULL,
     FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
     FOREIGN KEY (users_id) REFERENCES users(id) ON DELETE CASCADE
 );
