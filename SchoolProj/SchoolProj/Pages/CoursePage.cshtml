@@ -18,9 +18,17 @@
 <div class="course-block">
 
     @await Component.InvokeAsync("CourseSingle", @Model.Course)
+    
+    <!-- TODO кнопка купить -->
 
     <div class="course-comments simple-border">
-        <!-- TODO добавить форму создания комментария -->
+        
+        <!-- TODO отправлять коммент на сервер -->
+        
+        <form class="add-comment-form" action="">
+            <textarea placeholder="Введите комментарий"></textarea>
+            <button class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
+        </form>
 
         @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
         {
