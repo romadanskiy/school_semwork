@@ -1,8 +1,7 @@
 ﻿// Добавить комментарий
-
-function addComment(){
+function addComment() {
     
-    let commentInput = $("#commentInput")
+    let commentInput = $("#commentInput");
     let commentText = commentInput.val();
     
     if (commentText.length < 1) {
@@ -10,10 +9,8 @@ function addComment(){
         return;
     }
 
-    let path = document.location
-    let courseId = /\d+#?$/g.exec(path)[0]
-
-    // TODO отправлять id пользователя
+    let path = document.location;
+    let courseId = /\d+#?$/g.exec(path)[0];
     
     $.ajax({
         type: 'POST',
@@ -22,32 +19,32 @@ function addComment(){
             'course_id': courseId,
             'comment_text': encodeURIComponent(commentText),
         },
-        //data: stringified,
-        // success: function(res, status, xhr) {
-        // 	let id = xhr.getResponseHeader("id")
-        // 	let result = xhr.getResponseHeader("status")
-        // 	if (result === "success")
-        // 		document.location.href = "/debate/"+id
-        // }
+        success: function(res, status, xhr) {
+            let result = xhr.getResponseHeader("result")
+            if (result === "ok") {
+                let userName = xhr.getResponseHeader("users_name");
+                generateNewComment(commentText, userName);
+            }
+            else
+                alert("Что-то пошло не так");
+        }
     })
     
-    let dateTime = new Date().toLocaleString("ru").slice(0, -3).replace(',', '');
+    function generateNewComment(commentText, userName) {
+        
+        let dateTime = new Date().toLocaleString("ru").slice(0, -3).replace(',', '');
 
-    // TODO получить логин пользователя
-    
-    let newComment = "<div class=\"comment-block\">" +
-                        "<div class=\"comment-text\">" + commentText + "</div>" +
-                        "<div class=\"comment-user\">" + "ЛОГИН" + "</div>" +
-                        "<div class=\"comment-date\">" + dateTime + "</div>" +
-                    "</div>";
-    
-    let comments = $("#comments");
-    comments.prepend(newComment);
-    
-    // TODO изменить в БД date на timestamp
+        let newComment = "<div class=\"comment-block\">" +
+            "<div class=\"comment-text\">" + commentText + "</div>" +
+            "<div class=\"comment-user\">" + userName + "</div>" +
+            "<div class=\"comment-date\">" + dateTime + "</div>" +
+            "</div>";
 
+        let comments = $("#comments");
+        comments.prepend(newComment);
+    }
+    
     commentInput.val("");
-
 }
 
 
