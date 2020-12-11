@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -29,18 +30,35 @@ namespace SchoolProj
             var name = context.Request.Headers["name"];
             var password = context.Request.Headers["password"];
             var user = new UsersDao().TrySignin(name, password);
-            MakeResponce(context, user);
+            MakeResponse(context, user);
         }
 
         private static void SignUp(HttpContext context)
         {
             var name = context.Request.Headers["name"];
             var password = context.Request.Headers["password"];
+            var valid = Validate(name, password);
+            if (!valid)
+            {
+                MakeErrorResponse(context);
+                return;
+            }
             var user = new UsersDao().TrySignup(name, password);
-            MakeResponce(context, user);
+            MakeResponse(context, user);
         }
 
-        private static void MakeResponce(HttpContext context, Users user)
+        private static bool Validate(string name, string passworsd)
+        {
+            var regexName = new Regex("^[a-zA-Zа-яёА-ЯЁ]{3,20}$");
+            var checkName = regexName.IsMatch(name);
+            
+            var regexPassword = new Regex(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$");
+            var checkPassword = regexPassword.IsMatch(passworsd);
+
+            return checkName && checkPassword;
+        }
+
+        private static void MakeResponse(HttpContext context, Users user)
         {
             if (user != null)
             {
@@ -52,6 +70,11 @@ namespace SchoolProj
             {
                 context.Response.Headers.Add("result", "failed");
             }
+        }
+
+        private static void MakeErrorResponse(HttpContext context)
+        {
+            context.Response.Headers.Add("result", "error");
         }
     }
 }

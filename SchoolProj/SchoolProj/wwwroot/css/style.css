@@ -196,6 +196,11 @@ footer p {
   border-top-right-radius: 0;
 }
 
+.middle-input {
+  margin-bottom: -1px !important;
+  border-radius: 0 !important;
+}
+
 .center-block {
   min-height: 90vh;
   height: 90vh;
