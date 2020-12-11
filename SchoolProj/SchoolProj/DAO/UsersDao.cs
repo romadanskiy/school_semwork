@@ -111,6 +111,19 @@ namespace SchoolProj.Models
             return user.Password == password ? user : null;
         }
 
+        public Users TrySignup(string name, string password)
+        {
+            var user = GetByName(name);
+
+            if (user != null)
+                return null;
+
+            user = new Users(name, password, DateTime.Now);
+            Save(user);
+            
+            return user;
+        }
+
         public Users GetByName(string name)
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString.Get()))

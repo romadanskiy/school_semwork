@@ -49,7 +49,7 @@ namespace SchoolProj
             app.UseRouting();
             app.UseAuthorization();
 
-            app.Map("/signin_user", Sign.In);
+            app.Map("/authorization", Authorization.Start);
             app.Map("/add_comment", AddComment.Add);
 
             app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });

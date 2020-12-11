@@ -202,3 +202,12 @@ footer p {
   display: flex;
   align-items: center;
 }
+
+.remember-label {
+  margin: 0 !important;
+}
+
+.signup-link {
+  margin-bottom: 1rem !important;
+  margin-top: 0.4rem !important;
+}

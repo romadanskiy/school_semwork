@@ -67,18 +67,65 @@ function signin() {
     
     $.ajax({
         type: 'POST',
-        url: '/signin_user',
+        url: '/authorization',
         headers: {
             'name': name,
             'password': password,
-            'remember': remember
+            'remember': remember,
+            'new_user': 'false'
         },
         success: function(res, status, xhr) {
-            let result = xhr.getResponseHeader("signin_result")
+            let result = xhr.getResponseHeader("result")
             if (result === "ok")
                 document.location.href = "Account"
             else
                 alert("Неверный логин или пароль")
+        }
+    })
+}
+
+
+// Регистрация
+function signup() {
+    let form = document.signUp;
+    let name = form.name.value;
+    let password1 = form.password1.value;
+    let password2 = form.password2.value;
+    
+    let checkName = /^[a-zA-Zа-яёА-ЯЁ]{3,20}$/.test(name);
+    let checkPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password1);
+
+    if (name.length < 1 || password1.length < 1|| password2.length < 1) {
+        alert("Заполните все поля");
+        return;
+    }
+    if (!checkName) {
+        alert('Логин должен сожержать минимум 3 символа и состоять только из букв!')
+        return;
+    }
+    if (!checkPassword) {
+        alert('Пароль слишком пройстой!\nОн должен состоять минимум из 6 символов\nи содержать минимум одну цифру, одну заглавную и одну строчную буквы.');
+        return;
+    }
+    if (password2 !== password1) {
+        alert("Пароли не совпадают!")
+        return;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '/authorization',
+        headers: {
+            'name': name,
+            'password': password1,
+            'new_user': 'true'
+        },
+        success: function(res, status, xhr) {
+            let result = xhr.getResponseHeader("result")
+            if (result === "ok")
+                document.location.href = "Account"
+            else
+                alert("Этот логин уже занят")
         }
     })
 }
