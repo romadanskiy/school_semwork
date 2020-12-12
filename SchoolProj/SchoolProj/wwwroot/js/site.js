@@ -150,3 +150,26 @@ function exit() {
         }
     })
 }
+
+
+// Купить курс
+function buyCourse() {
+    
+    let path = document.location;
+    let courseId = /\d+#?$/g.exec(path)[0];
+    
+    $.ajax({
+        type: 'POST',
+        url: '/buyCourse',
+        headers: {
+            'course_id': courseId
+        },
+        success: function(res, status, xhr) {
+            let result = xhr.getResponseHeader("result")
+            if (result === "ok")
+                document.location.reload();
+            else
+                alert("Что-то пошло не так");
+        }
+    })
+}

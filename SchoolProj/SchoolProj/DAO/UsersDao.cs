@@ -109,19 +109,30 @@ namespace SchoolProj.Models
             return courses;
         }
 
-        public void AddCourse(int userId, int courseId)
+        public void AddCourseToUser(int userId, int courseId)
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString.Get()))
             {
                 connection.Open();
-                var command = new NpgsqlCommand(
+                var command1 = new NpgsqlCommand(
                     $"UPDATE users " +
                     $"SET number_of_courses = number_of_courses + 1 " +
                     $"WHERE id = {userId};", 
                     connection);
-                command.ExecuteNonQuery();
-                //TODO увелиить NumberOfStudents у Course
-                //TODO создать связь в UserToCourse
+                command1.ExecuteNonQuery();
+                var command2 = new NpgsqlCommand(
+                    $"UPDATE course " +
+                    $"SET number_of_students = number_of_students + 1 " +
+                    $"WHERE id = {courseId};", 
+                    connection);
+                command2.ExecuteNonQuery();
+                var command3 = new NpgsqlCommand(
+                    PgsqlFormat.Insert(
+                        "users_to_course",
+                        new[] {"users_id", "course_id"}, 
+                        new object[] {userId, courseId}),
+                    connection);
+                command3.ExecuteNonQuery();
             }
         }
 

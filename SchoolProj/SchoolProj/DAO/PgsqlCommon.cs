@@ -58,6 +58,11 @@ namespace SchoolProj.Models
 
         public static string Insert<T>(this IDao<T> table, string[] columns, object[] values)
         {
+            return Insert(table.ToString(), columns, values);
+        }
+        
+        public static string Insert(string table, string[] columns, object[] values)
+        {
             var sB = new StringBuilder($"INSERT INTO {table} (");
             var c1 = 0;
             foreach (var column in columns)
@@ -90,5 +95,6 @@ namespace SchoolProj.Models
             sB.Append(");");
             return sB.ToString();
         }
+        
     }
 }

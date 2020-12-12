@@ -31,7 +31,7 @@
                     @if (Model.UserIsAuthorized)
                     {
                         <!-- TODO кнопка купить -->
-                        <button class="btn btn-primary btn-sm">Купить</button>
+                        <button onclick="buyCourse()" class="btn btn-primary btn-sm">Купить</button>
                     }
                     @if (!Model.UserIsAuthorized)
                     {
