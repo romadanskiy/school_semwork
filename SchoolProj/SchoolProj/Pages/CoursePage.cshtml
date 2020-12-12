@@ -23,12 +23,17 @@
         <!-- TODO кнопка купить -->
 
         <div class="course-comments simple-border">
-
-            <form class="add-comment-form" action="" onsubmit="return false;">
-                <textarea id="commentInput" placeholder="Введите комментарий"></textarea>
-                <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
-            </form>
-
+            @if (Model.UserIsAuthorized)
+            {
+                <form class="add-comment-form" action="" onsubmit="return false;">
+                    <textarea id="commentInput" placeholder="Введите комментарий"></textarea>
+                    <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
+                </form>
+            }
+            @if (!Model.UserIsAuthorized)
+            {
+                <div><a href="@Url.Page("./SignIn")">Войдите</a>, что оставить отзыв</div>
+            }
             <div id="comments">
                 @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))
                 {
