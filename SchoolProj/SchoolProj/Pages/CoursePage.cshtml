@@ -23,11 +23,12 @@
         <!-- TODO кнопка купить -->
 
         <div class="course-comments simple-border">
+            <h2 class="comments-headline">Комментарии</h2>
             @if (Model.UserIsAuthorized)
             {
                 <form class="add-comment-form" action="" onsubmit="return false;">
                     <textarea id="commentInput" placeholder="Введите комментарий"></textarea>
-                    <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить комментарий</button>
+                    <button onclick="addComment()" class="btn btn-primary btn-sm" type="submit">Добавить</button>
                 </form>
             }
             @if (!Model.UserIsAuthorized)

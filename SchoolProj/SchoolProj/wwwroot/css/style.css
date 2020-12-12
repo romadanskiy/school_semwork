@@ -216,3 +216,7 @@ footer p {
   margin-bottom: 1rem !important;
   margin-top: 0.4rem !important;
 }
+
+.comments-headline {
+  font-weight: 300;
+}
