@@ -220,3 +220,15 @@ footer p {
 .comments-headline {
   font-weight: 300;
 }
+
+.account-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+}
+
+.account-username {
+  font-weight: 400;
+}

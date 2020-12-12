@@ -4,11 +4,11 @@ using SchoolProj.Models;
 
 namespace SchoolProj.Pages.ViewComponents
 {
-    public class CourseSingleViewComponent : ViewComponent
+    public class CourseContentViewComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync(Course entity)
         {
-            return View("CourseSingle", entity);
+            return View("CourseContent", entity);
         }
     }
 }

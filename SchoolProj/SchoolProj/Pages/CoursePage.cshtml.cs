@@ -11,6 +11,7 @@ namespace SchoolProj.Pages
         public Course Course;
         public List<Comment> Comments;
         public bool UserIsAuthorized;
+        public bool UserHasThisCourse;
         
         public void OnGet(string courseId)
         {
@@ -19,7 +20,13 @@ namespace SchoolProj.Pages
             Course = courseDao.GetById(id);
             var commentDao = new CommentDao();
             Comments = commentDao.GetByCourseId(id);
-            UserIsAuthorized = HttpContext.Session.Keys.Contains("users_id");
+            var usersId = HttpContext.Session.GetInt32("users_id");
+            UserIsAuthorized = usersId != null;
+            if (UserIsAuthorized)
+            {
+                var usersCourses = new UsersDao().GetCourses((int) usersId);
+                UserHasThisCourse = usersCourses.Select(c => c.Id).Contains(id);
+            }
         }
     }
 }

@@ -95,7 +95,7 @@ namespace SchoolProj.Models
             return subjects;
         }
 
-        private static Course GetCourse(IDataRecord record)
+        public Course GetCourse(IDataRecord record)
         {
             return new Course(
                 int.Parse(record["id"].ToString()),

@@ -9,5 +9,28 @@
     Layout = "Shared/_Layout";
 }
 
-<h1>Личный кабинет</h1>
-<a href="#" onclick="exit()">Выйти</a>
+<div class="container">
+    <div class="account-header">
+        <h1 class="account-username">@Model.Users.Name</h1>
+        <a href="#" onclick="exit()">Выйти</a>
+    </div>
+    <div class="account-courses">
+        <h2>Мои курсы (@Model.Users.NumberOfCourses):</h2>
+        @if (@Model.Courses.Count == 0)
+        {
+            <h3>Вы ещё не приобрели ни одного курса</h3>
+            <h3>Давайте <a href="@Url.Page("./Search")">найдём</a> что-нибудь для вас</h3>
+        }
+        @if (@Model.Courses.Count > 0)
+        {
+            <ul>
+                @foreach (var course in @Model.Courses)
+                {
+                    <li>
+                        <a href="CoursePage/@course.Id">@course.Name</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

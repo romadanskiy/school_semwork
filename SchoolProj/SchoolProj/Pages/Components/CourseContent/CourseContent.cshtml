@@ -1,0 +1,28 @@
+﻿@model SchoolProj.Models.Course
+
+<div>
+    <div>Предметы:</div>
+    <ul>
+        @foreach (var subject in @Model.Subjects)
+        {
+            <li>@subject</li>
+        }
+    </ul>
+</div>
+<div>Содержание:</div>
+<ul>
+    @foreach (var unit in @Model.Units)
+    {
+        <li>
+            <div>@unit.Name (занятий: @unit.Lessons.Count)</div>
+            <ul>
+                @foreach (var lesson in @unit.Lessons)
+                {
+                    <li>@lesson.Name</li>
+                }
+            </ul>
+        </li>
+    }
+</ul>
+<div>Цена: @Model.Price</div>
+

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SchoolProj.Models;
@@ -8,6 +9,7 @@ namespace SchoolProj
     public class SecurePageModel : PageModel
     {
         public Users Users;
+        public List<Course> Courses;
         
         public IActionResult OnGet()
         {
@@ -16,7 +18,9 @@ namespace SchoolProj
             {
                 return Redirect("SignIn");
             }
-            Users = new UsersDao().GetById((int) usersId);
+            var usersDao = new UsersDao();
+            Users = usersDao.GetById((int) usersId);
+            Courses = usersDao.GetCourses((int) usersId);
             return null;
         }
     }

@@ -85,6 +85,30 @@ namespace SchoolProj.Models
             }
         }
 
+        public List<Course> GetCourses(int userId)
+        {
+            var courses = new List<Course>();
+            using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString.Get()))
+            {
+                connection.Open();
+                var cmdText = $"SELECT course.* FROM users " +
+                              $"JOIN users_to_course ON users.id = users_to_course.users_id " +
+                              $"JOIN course ON users_to_course.course_id = course.id " +
+                              $"WHERE users.id = {userId};";
+                var command = new NpgsqlCommand(cmdText, connection);
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    foreach (DbDataRecord record in reader)
+                    {
+                        var course = new CourseDao().GetCourse(record);
+                        courses.Add(course);
+                    }
+                }
+            }
+            return courses;
+        }
+
         public void AddCourse(int userId, int courseId)
         {
             using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString.Get()))

@@ -18,9 +18,28 @@
 <div class="course-block">
     <div class="container">
 
-        @await Component.InvokeAsync("CourseSingle", @Model.Course)
-
-        <!-- TODO кнопка купить -->
+        <div class="course-card simple-border">
+            <div class="course-description">@Model.Course.Description</div>
+            <div class="course-content-info">
+                @if (@Model.UserHasThisCourse)
+                {
+                    @await Component.InvokeAsync("CourseContentFull", @Model.Course)
+                }
+                @if (!@Model.UserHasThisCourse)
+                {
+                    @await Component.InvokeAsync("CourseContent", @Model.Course)
+                    @if (Model.UserIsAuthorized)
+                    {
+                        <!-- TODO кнопка купить -->
+                        <button class="btn btn-primary btn-sm">Купить</button>
+                    }
+                    @if (!Model.UserIsAuthorized)
+                    {
+                        <div><a href="@Url.Page("./SignIn")">Войдите</a>, чтобы купить</div>
+                    }
+                }
+            </div>
+        </div>
 
         <div class="course-comments simple-border">
             <h2 class="comments-headline">Комментарии</h2>
@@ -33,7 +52,7 @@
             }
             @if (!Model.UserIsAuthorized)
             {
-                <div><a href="@Url.Page("./SignIn")">Войдите</a>, что оставить отзыв</div>
+                <div><a href="@Url.Page("./SignIn")">Войдите</a>, чтобы оставить отзыв</div>
             }
             <div id="comments">
                 @foreach (var comment in @Model.Comments.OrderByDescending(c => c.CreationDate))

@@ -20,7 +20,7 @@
 
         <div class="row">
             
-            @foreach (var course in Model.Courses)
+            @foreach (var course in Model.Courses.OrderByDescending(c => c.Id))
             {
                 @await Component.InvokeAsync("CourseIndex", course);
             }
