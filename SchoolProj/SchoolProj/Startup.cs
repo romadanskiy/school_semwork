@@ -50,6 +50,7 @@ namespace SchoolProj
             app.UseAuthorization();
 
             app.Map("/authorization", Authorization.Start);
+            app.Map("/exit", Authorization.Exit);
             app.Map("/add_comment", AddComment.Add);
 
             app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });

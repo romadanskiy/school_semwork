@@ -25,6 +25,24 @@ namespace SchoolProj
             });
         }
 
+        public static void Exit(IApplicationBuilder app)
+        {
+            app.Run(async context =>
+            {
+                var request = context.Request;
+                if (request.Headers.ContainsKey("exit"))
+                {
+                    context.Response.Headers.Add("result", "ok");
+                    context.Session.Remove("users_id");
+                    context.Session.Remove("users_name");
+                }
+                else
+                {
+                    context.Response.Headers.Add("result", "failed");
+                }
+            });
+        }
+
         private static void SignIn(HttpContext context)
         {
             var name = context.Request.Headers["name"];

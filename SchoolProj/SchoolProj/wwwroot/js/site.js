@@ -131,3 +131,22 @@ function signup() {
         }
     })
 }
+
+
+//Выход
+function exit() {
+    $.ajax({
+        type: 'POST',
+        url: '/exit',
+        headers: {
+            'exit': 'exit'
+        },
+        success: function(res, status, xhr) {
+            let result = xhr.getResponseHeader("result")
+            if (result === "ok")
+                document.location.href = "SignIn"
+            else
+                alert("Что-то пошло не так")
+        }
+    })
+}
