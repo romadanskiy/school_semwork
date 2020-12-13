@@ -7,8 +7,9 @@
         public string Name { get; set; }
         public string Content { get; set; }
 
-        public Lesson(string name, string content)
+        public Lesson(int id, string name, string content)
         {
+            Id = id;
             Name = name;
             Content = content;
         }

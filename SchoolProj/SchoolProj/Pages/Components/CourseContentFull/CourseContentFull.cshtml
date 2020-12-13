@@ -10,18 +10,24 @@
     </ul>
 </div>
 <h4>Этот курс ваш, пройдите его!</h4>
-<div>Содержание:</div>
-<ul>
-    @foreach (var unit in @Model.Units)
-    {
-        <li>
-            <div>@unit.Name (занятий: @unit.Lessons.Count)</div>
-            <ul>
-                @foreach (var lesson in @unit.Lessons)
-                {
-                    <li>@lesson.Name</li>
-                }
-            </ul>
-        </li>
-    }
-</ul>
+@foreach (var unit in @Model.Units)
+{
+    <div class="unit-block">
+        <div>@unit.Name (занятий: @unit.Lessons.Count)</div>
+        @foreach (var lesson in @unit.Lessons)
+        {
+            var id = "lesson" + @lesson.Id;
+            <div class="lesson-block">
+                <div>
+                    <div class="my-btn my-btn-primary lesson-btn" role="button" data-toggle="collapse" data-target="#@id" aria-expanded="false" aria-controls="@id">
+                        @lesson.Name
+                    </div>
+                </div>
+                <div class="collapse" id="@id">
+                    <div class="card card-body lesson-content">@lesson.Content</div>
+                </div>
+            </div>
+        }
+    </div>
+}
+

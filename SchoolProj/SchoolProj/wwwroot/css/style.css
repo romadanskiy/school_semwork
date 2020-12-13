@@ -232,3 +232,48 @@ footer p {
 .account-username {
   font-weight: 400;
 }
+
+.unit-block {
+  margin-top: 0.5rem;
+}
+
+.lesson-block {
+  margin-bottom: 0.5rem;
+}
+
+.lesson-btn {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.lesson-content {
+  border-top-left-radius: 0;
+  border: 1px solid #007bff;
+}
+
+.my-btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.my-btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.my-btn-primary:hover {
+  background-color: #0062cc;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

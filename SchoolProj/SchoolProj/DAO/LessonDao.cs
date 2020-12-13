@@ -61,6 +61,7 @@ namespace SchoolProj.Models
         private static Lesson GetLesson(IDataRecord record)
         {
             return new Lesson(
+                int.Parse(record["id"].ToString()),
                 record["name"].ToString(),
                 record["content"].ToString());
         }
