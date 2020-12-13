@@ -185,7 +185,7 @@ function addFile() {
     
     let xhr = new XMLHttpRequest();
 
-    xhr.open('POST', '/load_file', true);
+    xhr.open('POST', '/load_file');
     xhr.send(formData);
     
     xhr.onload = function () {
