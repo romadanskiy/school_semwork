@@ -14,7 +14,7 @@
     <div class="popular-head">Популярные курсы основых предметов</div>
 </section>
 
-<div class="album py-5 bg-white">
+<div class="album py-5 bg-light">
     <div class="container">
 
         <div class="row">
@@ -58,16 +58,14 @@
     </div>
 </div>
 
-<section class="jumbotron text-center bg-light">
+<section class="jumbotron text-center">
     <div class="popular-head">Найдем курс специально для вас</div>
 </section>
-
-<!-- TODO поиск, фильтр, сортировка курсов -->
 
 <div class="album py-5 bg-light">
     <div class="container" id="forSort">
         
-        <form action="" onsubmit="return false;">
+        <form action="" class="searchCourseForm" onsubmit="return false;">
             <input type="text" id="search-text" placeholder="Поиск по названию">
             <select name="" class="filter">
                 <option value="disabled">Выберите предмет</option>
@@ -76,15 +74,19 @@
                     <option value="@subject.Name">@subject.Name</option>
                 }
             </select>
-            <button type="button" onclick="searchCourse()">Найти</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="searchCourse()">Найти</button>
         </form>
         
-        <form action="" onsubmit="return false;">
-            <input type="radio" id="r1" name="price">
-            <label for="r1">Сначала дешевле</label>
-            <input type="radio" id="r2" name="price">
-            <label for="r2">Сначала дороже</label>
-            <button type="button" onclick="sortCourse()">Сортировать</button>
+        <form action="" class="sortCourseForm" onsubmit="return false;">
+            <div class="centered">
+                <input type="radio" id="r1" name="price">
+                <label for="r1">Сначала дешевле</label>
+            </div>
+            <div class="centered">
+                <input type="radio" id="r2" name="price">
+                <label for="r2">Сначала дороже</label>
+            </div>
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="sortCourse()">Сортировать</button>
         </form>
         
         <div class="row" id="forSearch">

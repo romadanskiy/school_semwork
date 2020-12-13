@@ -309,3 +309,52 @@ tbody > tr {
 #search-text {
   margin-right: 0.5rem;
 }
+
+.searchCourseForm {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.sortCourseForm {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.searchCourseForm > select {
+  margin-right: 0.5rem; 
+}
+
+.sortCourseForm label {
+  margin-bottom: 0 !important;
+  margin-left: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+}
+
+.price-div {
+  padding: 0 1.25rem 1.25rem;
+}
+
+.price:before {
+  content: 'Цена: ';
+}
+
+@media (max-width: 470px) {
+  .searchCourseForm {
+    flex-direction: column;
+  }
+  .searchCourseForm > input, .searchCourseForm > select {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem;
+  }
+  .sortCourseForm {
+    flex-direction: column;
+  }
+  .sortCourseForm > .centered {
+    margin-bottom: 0.5rem !important;
+  }
+}
