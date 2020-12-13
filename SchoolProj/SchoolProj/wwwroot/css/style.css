@@ -234,11 +234,11 @@ footer p {
 }
 
 .unit-block {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .lesson-block {
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .lesson-btn {
@@ -248,7 +248,9 @@ footer p {
 
 .lesson-content {
   border-top-left-radius: 0;
-  border: 1px solid #007bff;
+  border: 2px solid #007bff;
+  padding: .75rem !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .my-btn {
@@ -259,7 +261,7 @@ footer p {
   vertical-align: middle;
   user-select: none;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: .375rem .75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -275,5 +277,11 @@ footer p {
 
 .my-btn-primary:hover {
   background-color: #0062cc;
+  border-color: #0062cc;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.my-btn-primary:hover + .collapse > .lesson-content {
+  border-color: #0062cc !important;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

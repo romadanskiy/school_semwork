@@ -18,10 +18,8 @@
         {
             var id = "lesson" + @lesson.Id;
             <div class="lesson-block">
-                <div>
-                    <div class="my-btn my-btn-primary lesson-btn" role="button" data-toggle="collapse" data-target="#@id" aria-expanded="false" aria-controls="@id">
-                        @lesson.Name
-                    </div>
+                <div class="my-btn my-btn-primary lesson-btn" role="button" data-toggle="collapse" data-target="#@id" aria-expanded="false" aria-controls="@id">
+                    @lesson.Name
                 </div>
                 <div class="collapse" id="@id">
                     <div class="card card-body lesson-content">@lesson.Content</div>
