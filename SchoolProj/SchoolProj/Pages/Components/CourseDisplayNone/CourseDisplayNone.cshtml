@@ -1,0 +1,23 @@
+﻿@model SchoolProj.Models.Course
+
+<div class="col-md-4" style="display: none;">
+    <div class="card mb-4 shadow-sm">
+        <div class="bd-placeholder-img card-img-top my-card">
+            <div class="my-card-placeholder">@Model.Name</div>
+        </div>
+        <div class="card-body">
+            <p class="card-text">@Model.Description</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <a class="btn btn-outline-primary btn-sm" href="CoursePage/@Model.Id">Подробнее</a>
+                <small class="text-muted participants">участников: @Model.NumberOfStudents</small>
+            </div>
+        </div>
+        <ul>
+            @foreach (var subject in Model.Subjects)
+            {
+                <li>@subject</li>
+            }
+        </ul>
+        <div>Цена: </div><div class="price">@Model.Price</div>
+    </div>
+</div>

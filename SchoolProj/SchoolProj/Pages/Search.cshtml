@@ -14,7 +14,7 @@
     <div class="popular-head">Популярные курсы основых предметов</div>
 </section>
 
-<div class="album bg-white">
+<div class="album py-5 bg-white">
     <div class="container">
 
         <div class="row">
@@ -64,15 +64,35 @@
 
 <!-- TODO поиск, фильтр, сортировка курсов -->
 
-<div class="album bg-light">
-    <div class="container">
+<div class="album py-5 bg-light">
+    <div class="container" id="forSort">
         
-        <div class="s">
-            <input type="text" placeholder="Поиск по названию">
+        <form action="" onsubmit="return false;">
+            <input type="text" id="search-text" placeholder="Поиск по названию">
+            <select name="" class="filter">
+                <option value="disabled">Выберите предмет</option>
+                @foreach (var subject in @Model.Subjects)
+                {
+                    <option value="@subject.Name">@subject.Name</option>
+                }
+            </select>
+            <button type="button" onclick="searchCourse()">Найти</button>
+        </form>
+        
+        <form action="" onsubmit="return false;">
+            <input type="radio" id="r1" name="price">
+            <label for="r1">Сначала дешевле</label>
+            <input type="radio" id="r2" name="price">
+            <label for="r2">Сначала дороже</label>
+            <button type="button" onclick="sortCourse()">Сортировать</button>
+        </form>
+        
+        <div class="row" id="forSearch">
+            @foreach (var course in Model.Courses.OrderByDescending(c => c.Id))
+            {
+                @await Component.InvokeAsync("CourseDisplayNone", course);
+            }
         </div>
-
-        <div class="row">
-
-        </div>
+        
     </div>
 </div>

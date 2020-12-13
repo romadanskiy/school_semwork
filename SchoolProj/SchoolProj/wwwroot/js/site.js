@@ -211,3 +211,78 @@ function searchFile() {
         }
     }
 }
+
+
+// Поиск курсов
+function searchCourse() {
+    let search = document.getElementById('search-text');
+    let select = document.querySelector('select');
+    
+    let phrase = search.value.toUpperCase();
+    let subject = select.value.toUpperCase();
+    
+    let row = document.getElementById('forSearch');
+    let cols = row.children;
+    
+    for (let i=0; i<cols.length; i++) {
+        let courseName = cols[i].querySelector('.my-card-placeholder');
+        let li = cols[i].querySelectorAll('li');
+        let set = new Set();
+        for (let j=0; j<li.length; j++) {
+            set.add(li[j].innerHTML.toUpperCase());
+        }
+        let subjects = Array.from(set);
+        
+        if (subject === "disabled".toUpperCase()) {
+            if (courseName.innerHTML.toUpperCase().indexOf(phrase) > -1) {
+                cols[i].style.display = "";
+            } else {
+                cols[i].style.display = "none";
+            }
+        } else {
+            if (courseName.innerHTML.toUpperCase().indexOf(phrase) > -1 && subjects.indexOf(subject) !== -1) {
+                cols[i].style.display = "";
+            } else {
+                cols[i].style.display = "none";
+            }
+        }
+    }
+}
+
+
+// Сортировка курсов по цене
+function sortCourse() {
+    
+    let cheap = document.getElementById('r1');
+    let expensive = document.getElementById('r2');
+    
+    if (!cheap.checked && !expensive.checked) return;
+    
+    let row = document.getElementById('forSearch');
+    let cols = Array.prototype.slice.call(row.children);
+    
+    function compare (el1, el2) {
+        let data1 = Number(el1.querySelector('.price').innerHTML);
+        let data2 = Number(el2.querySelector('.price').innerHTML);
+        
+        if (data1 > data2) return d;
+        if (data1 < data2) return -1 * d;
+        return 0;
+    }
+    
+    let d = 1;
+    if (expensive.checked) {
+        d = -1;
+    }
+    cols.sort(compare);
+    
+    let container = document.querySelector('#forSort');
+    container.removeChild(row);
+    for (let i=0; i < cols.length; i++) {
+        row.appendChild(cols[i]);
+    }
+    container.appendChild(row);
+    
+    
+    
+}

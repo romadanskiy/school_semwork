@@ -30,7 +30,7 @@
                     @await Component.InvokeAsync("CourseContent", @Model.Course)
                     @if (Model.UserIsAuthorized)
                     {
-                        <!-- TODO кнопка купить -->
+                        <!-- TODO окно покупки -->
                         <button onclick="buyCourse()" class="btn btn-primary btn-sm">Купить</button>
                     }
                     @if (!Model.UserIsAuthorized)
