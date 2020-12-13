@@ -295,3 +295,17 @@ footer p {
   margin-bottom: 0 !important;
   margin-top: 1rem;
 }
+
+tbody > tr {
+  background-color: #fff;
+}
+
+.searchFileForm {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+#search-text {
+  margin-right: 0.5rem;
+}

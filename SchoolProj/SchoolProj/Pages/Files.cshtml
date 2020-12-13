@@ -52,6 +52,11 @@
         {
             <div><a href="@Url.Page("./SignIn")">Войдите</a>, чтобы добавить файл</div>
         }
+        
+        <form class="searchFileForm" action="" onsubmit="searchFile(); return false;">
+            <input type="text" class="form-control" id="search-text" placeholder="Название файла">
+            <button type="button" class="btn btn-outline-primary btn-sm" onclick="searchFile()">Найти</button>
+        </form>
 
         <table class="table table-hover">
             <thead class="thead-blue">

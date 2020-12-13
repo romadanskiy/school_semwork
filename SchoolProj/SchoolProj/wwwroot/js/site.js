@@ -195,3 +195,19 @@ function addFile() {
     }
 
 }
+
+
+// Поиск файла
+function searchFile() {
+    let table = document.querySelector('table');
+    let search = document.getElementById('search-text');
+    let phrase = search.value.toUpperCase();
+
+    for (let i = 1; i < table.rows.length; i++) {
+        if (table.rows[i].cells[1].innerHTML.toUpperCase().indexOf(phrase) > -1) {
+            table.rows[i].style.display = "";
+        } else {
+            table.rows[i].style.display = "none";
+        }
+    }
+}
