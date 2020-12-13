@@ -285,3 +285,13 @@ footer p {
   border-color: #0062cc !important;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.thead-blue {
+  background-color: #003B7A;
+  color: #fff;
+}
+
+.table {
+  margin-bottom: 0 !important;
+  margin-top: 1rem;
+}

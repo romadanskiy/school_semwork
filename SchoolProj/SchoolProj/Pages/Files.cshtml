@@ -1,0 +1,80 @@
+﻿@page
+@model SchoolProj.Pages.Files
+
+@{
+    ViewData["Title"] = "Файлы";
+}
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Добавить файл</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="addFileForm">
+                    <input id="file_input" type="file" name="addFileInput" accept=".pdf, .txt">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                <button type="button" onclick="addFile()" class="btn btn-primary" data-dismiss="modal">Загрузить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Книги, статьи, архивы, ...</h1>
+        <p class="lead text-muted">Здесь вы найдете полезные материалы</p>
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        
+        @if (@Model.UserIsAuthorized)
+        {
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Добавить</button>
+        }
+        @if (!@Model.UserIsAuthorized)
+        {
+            <div><a href="@Url.Page("./SignIn")">Войдите</a>, чтобы добавить файл</div>
+        }
+
+        <table class="table table-hover">
+            <thead class="thead-blue">
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Расширение</th>
+                <th>Username</th>
+                <th>Ссылка</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var file in @Model.AllFiles)
+            {
+                <tr>
+                    <th scope="row">@file.Id</th>
+                    <td>@file.FileName</td>
+                    <td>@file.FileExtension</td>
+                    <td>@file.UserName</td>
+                    <td><a href="@Url.Content($"~/files/{file.FileName}{file.FileExtension}")">Открыть</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

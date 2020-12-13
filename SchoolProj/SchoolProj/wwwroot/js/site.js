@@ -173,3 +173,25 @@ function buyCourse() {
         }
     })
 }
+
+
+// Загрузить файл
+function addFile() {
+    let input = document.getElementById("file_input");
+    let file = input.files[0];
+    
+    let formData = new FormData();
+    formData.append('file', file, file.name);
+    
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', '/load_file', true);
+    xhr.send(formData);
+    
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            document.location.reload();
+        }
+    }
+
+}
