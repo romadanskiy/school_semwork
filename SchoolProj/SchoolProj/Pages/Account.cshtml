@@ -34,9 +34,12 @@
         }
     </div>
     <div class="account-purchases">
-        <h2>История покупок:</h2>
-        <ul>
-            <li><a href="@Url.Page("./PurchasesHistory")">Посмотреть</a></li>
-        </ul>
+        @if (@Model.Courses.Count > 0)
+        {
+            <h2>История покупок:</h2>
+            <ul>
+                <li><a href="@Url.Page("./PurchasesHistory")">Посмотреть</a></li>
+            </ul>
+        }
     </div>
 </div>

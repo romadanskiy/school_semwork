@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using SchoolProj.Models;
 
@@ -19,6 +20,10 @@ namespace SchoolProj
                 var courseId = int.Parse(context.Request.Headers["course_id"]);
                 var usersDao = new UsersDao();
                 usersDao.AddCourseToUser((int) userId, courseId);
+                var purchaseDao = new PurchaseDao();
+                var price = int.Parse(context.Request.Headers["price"]);
+                var newPurchase = new Purchase((int) userId, courseId, DateTime.Now, price);
+                purchaseDao.Save(newPurchase);
                 context.Response.Headers.Add("result", "ok");
             });
         }

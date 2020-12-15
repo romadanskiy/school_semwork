@@ -23,9 +23,18 @@ namespace SchoolProj.Models
             throw new System.NotImplementedException();
         }
 
-        public void Save(Purchase t)
+        public void Save(Purchase purchase)
         {
-            throw new System.NotImplementedException();
+            using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString.Get()))
+            {
+                connection.Open();
+                var command = new NpgsqlCommand(
+                    this.Insert(
+                        new[] {"users_id", "course_id", "purchase_date", "price"},
+                        new object[] {purchase.UsersId, purchase.CourseId, purchase.PurchaseDate, purchase.Price}),
+                    connection);
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Delete(Purchase t)

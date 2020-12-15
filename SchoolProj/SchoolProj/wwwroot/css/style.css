@@ -340,8 +340,12 @@ tbody > tr {
   padding: 0 1.25rem 1.25rem;
 }
 
-.price:before {
+.price:before, #course-price:before {
   content: 'Цена: ';
+}
+
+#course-price {
+  margin-bottom: 1rem;
 }
 
 .account-purchases {

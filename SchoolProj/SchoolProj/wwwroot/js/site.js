@@ -158,11 +158,14 @@ function buyCourse() {
     let path = document.location;
     let courseId = /\d+#?$/g.exec(path)[0];
     
+    let price = document.getElementById('course-price').innerHTML;
+    
     $.ajax({
         type: 'POST',
         url: '/buyCourse',
         headers: {
-            'course_id': courseId
+            'course_id': courseId,
+            'price': price
         },
         success: function(res, status, xhr) {
             let result = xhr.getResponseHeader("result")
