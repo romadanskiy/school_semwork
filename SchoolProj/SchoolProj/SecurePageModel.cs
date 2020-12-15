@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,6 +11,7 @@ namespace SchoolProj
     {
         public Users Users;
         public List<Course> Courses;
+        public List<Purchase> Purchases;
         
         public IActionResult OnGet()
         {
@@ -21,6 +23,12 @@ namespace SchoolProj
             var usersDao = new UsersDao();
             Users = usersDao.GetById((int) usersId);
             Courses = usersDao.GetCourses((int) usersId);
+            var purchaseDao = new PurchaseDao();
+            Purchases = purchaseDao.GetByUsersId((int) usersId);
+            foreach (var purchase in Purchases)
+            {
+                purchase.CourseName = Courses.First(c => c.Id == purchase.CourseId).Name;
+            }
             return null;
         }
     }

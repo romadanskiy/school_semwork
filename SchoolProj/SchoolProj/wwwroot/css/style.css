@@ -227,6 +227,7 @@ footer p {
   justify-content: space-between;
   padding-bottom: 3rem;
   padding-top: 3rem;
+  align-items: center;
 }
 
 .account-username {
@@ -341,6 +342,10 @@ tbody > tr {
 
 .price:before {
   content: 'Цена: ';
+}
+
+.account-purchases {
+  margin-top: 2rem;
 }
 
 @media (max-width: 470px) {

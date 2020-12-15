@@ -1,0 +1,9 @@
+﻿@model SchoolProj.Models.Purchase
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <p class="card-text">Название курса: <a href="CoursePage/@Model.CourseId">@Model.CourseName</a></p>
+        <p class="card-text">Дата и время покупки: @Model.PurchaseDate.ToString("g")</p>
+        <p class="card-text">Стоимость: @Model.Price</p>
+    </div>
+</div>
