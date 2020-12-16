@@ -352,6 +352,42 @@ tbody > tr {
   margin-top: 2rem;
 }
 
+.contacts-div {
+  width: 450px;
+  height: 140px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  background-color: orange;
+}
+
+.contact-type {
+  float: left;
+}
+
+.contact-copy {
+  font-weight: 500;
+  cursor: pointer;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.contact-copy:hover {
+  color: #003B7A;;
+}
+
+.card-contacts {
+  font-size: 1.25rem;
+}
+
+
+
+
+
+
+
+
 @media (max-width: 470px) {
   .searchCourseForm {
     flex-direction: column;

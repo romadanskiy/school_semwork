@@ -1,0 +1,54 @@
+﻿@page
+@model SchoolProj.Pages.Contacts
+
+@{
+    ViewData["Title"] = "Контакты";
+}
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Как с нами связаться</h1>
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        
+        <div class="row">
+            
+            <div class="col-md-8">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body card-contacts">
+                        <p class="card-text">Если у вас вознокли вопросы или проблемы, свяжитесь с нами</p>
+                        <div>
+                            <div class="contact-type">Телефон:&nbsp;</div>
+                            <div class="contact-copy" title="Скопировать" onclick="copyThis(this)">+7 (997) 333-77-77</div>
+                        </div>
+                        <div>
+                            <div class="contact-type">Почта:&nbsp;</div>
+                            <div class="contact-copy" title="Скопировать" onclick="copyThis(this)">bbt_help@gmail.com</div>
+                        </div>
+                        <div>
+                            <div class="contact-type">Телеграм:&nbsp;</div>
+                            <div class="contact-copy" title="Скопировать" onclick="copyThis(this)">bbt_tg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body card-contacts">
+                        <p class="card-text">Служба поддержки работает круглосуточно</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>

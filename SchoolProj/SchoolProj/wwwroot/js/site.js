@@ -286,6 +286,24 @@ function sortCourse() {
     }
     container.appendChild(row);
     
+}
+
+
+// Копировать элемент по нажатию 
+function copyThis(el) {
     
+    let content = el.textContent;
+
+    copyToClipboard(content);
+    alert('Cкопировано: ' + content);
     
+    function copyToClipboard(str) {
+        let fakeArea = document.createElement('textarea');
+        document.body.appendChild(fakeArea);
+        fakeArea.value = str;
+        fakeArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(fakeArea);
+    }
+
 }
