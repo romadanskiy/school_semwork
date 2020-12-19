@@ -18,7 +18,10 @@ namespace SchoolProj
             var usersId = HttpContext.Session.GetInt32("users_id");
             if (usersId == null)
             {
-                return Redirect("SignIn");
+                if (HttpContext.Request.Cookies.ContainsKey("users_id"))
+                    usersId = int.Parse(HttpContext.Request.Cookies["users_id"]);
+                else
+                    return Redirect("SignIn");
             }
             var usersDao = new UsersDao();
             Users = usersDao.GetById((int) usersId);

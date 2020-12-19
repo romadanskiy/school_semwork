@@ -35,7 +35,10 @@ namespace SchoolProj
                 {
                     context.Session.Remove("users_id");
                     context.Session.Remove("users_name");
-                    context.Response.Cookies.Delete("id");
+                    if (context.Request.Cookies.ContainsKey("users_id"))
+                        context.Response.Cookies.Delete("users_id");
+                    if (context.Request.Cookies.ContainsKey("users_name"))
+                        context.Response.Cookies.Delete("users_name");
                     context.Response.Headers.Add("result", "ok");
                 }
                 else
@@ -51,13 +54,14 @@ namespace SchoolProj
             var password = context.Request.Headers["password"];
             var user = new UsersDao().TrySignin(name, password);
             if (context.Request.Headers["remember"].ToString() == "true")
-                context.Response.Cookies.Append("id", user.Id.ToString());
+                RememberUser(context, user);
             MakeResponse(context, user);
         }
 
-        private static void Remember(HttpContext context, int id)
+        private static void RememberUser(HttpContext context, Users user)
         {
-            
+            context.Response.Cookies.Append("users_id", user.Id.ToString());
+            context.Response.Cookies.Append("users_name", user.Name);
         }
 
         private static void SignUp(HttpContext context)

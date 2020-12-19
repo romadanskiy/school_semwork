@@ -20,6 +20,10 @@ namespace SchoolProj.Pages
                 file.UserName = userDao.GetById(file.UserId).Name;
             }
             var usersId = HttpContext.Session.GetInt32("users_id");
+            if (usersId == null && HttpContext.Request.Cookies.ContainsKey("users_id"))
+            {
+                usersId = int.Parse(HttpContext.Request.Cookies["users_id"]);
+            }
             UserIsAuthorized = usersId != null;
         }
     }
