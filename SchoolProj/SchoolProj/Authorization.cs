@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -32,9 +33,10 @@ namespace SchoolProj
                 var request = context.Request;
                 if (request.Headers.ContainsKey("exit"))
                 {
-                    context.Response.Headers.Add("result", "ok");
                     context.Session.Remove("users_id");
                     context.Session.Remove("users_name");
+                    context.Response.Cookies.Delete("id");
+                    context.Response.Headers.Add("result", "ok");
                 }
                 else
                 {
@@ -48,7 +50,14 @@ namespace SchoolProj
             var name = context.Request.Headers["name"];
             var password = context.Request.Headers["password"];
             var user = new UsersDao().TrySignin(name, password);
+            if (context.Request.Headers["remember"].ToString() == "true")
+                context.Response.Cookies.Append("id", user.Id.ToString());
             MakeResponse(context, user);
+        }
+
+        private static void Remember(HttpContext context, int id)
+        {
+            
         }
 
         private static void SignUp(HttpContext context)
