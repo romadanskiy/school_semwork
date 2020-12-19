@@ -13,6 +13,16 @@ namespace SchoolProj
             app.Run(async context =>
             {
                 var usersId = context.Session.GetInt32("users_id");
+                if (usersId == null)
+                {
+                    if (context.Request.Cookies.ContainsKey("users_id"))
+                    {
+                        usersId = int.Parse(context.Request.Cookies["users_id"]);
+                        var usersName = context.Request.Cookies["users_name"];
+                        context.Session.SetInt32("users_id", (int) usersId);
+                        context.Session.SetString("users_name", usersName);
+                    }
+                }
                 var file = context.Request.Form.Files.GetFile("file");
                 var fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 var fileExtension = Path.GetExtension(file.FileName);

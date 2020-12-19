@@ -16,6 +16,13 @@ namespace SchoolProj
                 var userId = context.Session.GetInt32("users_id");
                 if (userId == null)
                 {
+                    if (context.Request.Cookies.ContainsKey("users_id"))
+                    {
+                        userId = int.Parse(context.Request.Cookies["users_id"]);
+                        var usersName = context.Request.Cookies["users_name"];
+                        context.Session.SetInt32("users_id", (int) userId);
+                        context.Session.SetString("users_name", usersName);
+                    }
                     context.Response.Headers.Add("result", "error");
                     return;
                 }

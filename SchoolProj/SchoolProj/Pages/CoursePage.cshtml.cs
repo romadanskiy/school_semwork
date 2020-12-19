@@ -24,6 +24,9 @@ namespace SchoolProj.Pages
             if (usersId == null && HttpContext.Request.Cookies.ContainsKey("users_id"))
             {
                 usersId = int.Parse(HttpContext.Request.Cookies["users_id"]);
+                var usersName = HttpContext.Request.Cookies["users_name"];
+                HttpContext.Session.SetInt32("users_id", (int) usersId);
+                HttpContext.Session.SetString("users_name", usersName);
             }
             UserIsAuthorized = usersId != null;
             if (UserIsAuthorized)

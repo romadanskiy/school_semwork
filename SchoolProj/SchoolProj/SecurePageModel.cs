@@ -19,7 +19,12 @@ namespace SchoolProj
             if (usersId == null)
             {
                 if (HttpContext.Request.Cookies.ContainsKey("users_id"))
+                {
                     usersId = int.Parse(HttpContext.Request.Cookies["users_id"]);
+                    var usersName = HttpContext.Request.Cookies["users_name"];
+                    HttpContext.Session.SetInt32("users_id", (int) usersId);
+                    HttpContext.Session.SetString("users_name", usersName);
+                }
                 else
                     return Redirect("SignIn");
             }
