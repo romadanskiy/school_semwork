@@ -155,6 +155,7 @@ namespace SchoolProj.Models
 
             user = new Users(name, password, DateTime.Now);
             Save(user);
+            user = GetByName(name);
             
             return user;
         }
